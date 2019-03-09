@@ -11,6 +11,9 @@ config_schema:
   - [ "cportal", "o", {title: "Captive Portal configurations"}]
   - [ "cportal.index", "wifi_portal.html" ]
 
+libs:
+  - origin: https://github.com/tripflex/captive-portal-wifi-rpc
+
 tags:
   - wifi
   - setup

@@ -32,8 +32,9 @@ Myles McNamara ( https://smyl.es )
 ## Features
 - Provides web UI for testing and configuring WiFi
 - **Completely vanilla JavaScript**, no jQuery, Zepto, or other libraries required (because we all know space is limited)
-- Unminified and non-gzipped files are only `14.2kb` total in size ( `wifi_portal.css - 3kb`, `wifi_portal.html - 1.45kb`, `wifi_portal.js - 9.67kb` )
-- Minified and gzipped files are only `3.26kb` total in size ( `wifi_portal.min.css.gz - 735b`, `wifi_portal.html.gz - 561b`, `wifi_portal.min.js.gz - 2kb` )
+- **Unminified and non-gzipped** files are only `14.2kb` total in size ( `wifi_portal.css - 2.87 KB`, `wifi_portal.html - 1.45kb`, `wifi_portal.js - 14.2 KB` )
+- **Minified** files are only `14.2kb` total in size ( `wifi_portal.css -  1.81 KB`, `wifi_portal.html - 1007 Bytes`, `wifi_portal.js - 6.79 KB` )
+- **Minified and gzipped** files are only `3.26kb` total in size ( `wifi_portal.css.gz - 735b`, `wifi_portal.html.gz - 561b`, `wifi_portal.js.gz - 2kb` )
 - Displays a dropdown of available networks to connect to
 - Included minified files by default on device `fs_min` directory (are copied to device)
 - Source files are available in the `fs` directory (are not copied to device)
