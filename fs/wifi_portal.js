@@ -231,7 +231,7 @@ var WiFiPortal = {
 
         WiFiPortal.Test.ssid = ssid; // Set SSID value in test so we can verify connection is to that exact SSID
 
-        WiFiPortal.rpcCall('POST', 'WiFi.PortalSave', 'Sending credentials to device to test...', { ssid: ssid, pass: password } , function( resp ){
+        WiFiPortal.rpcCall('POST', 'WiFi.PortalTest', 'Sending credentials to device to test...', { ssid: ssid, pass: password } , function( resp ){
             // True means we received a response, but no data
             if( resp && resp !== true && resp.result !== undefined ){
 
