@@ -1,0 +1,24 @@
+author: Myles McNamara <myles@smyl.es>
+type: lib
+description: Captive Portal WiFi Setup Web UI
+version: 1.0.0
+# platforms: [ cc3200, cc3220, esp32, esp8266 ]
+
+filesystem:
+  - fs_min
+
+config_schema:
+  - [ "cportal", "o", {title: "Captive Portal configurations"}]
+  - [ "cportal.index", "wifi_portal.html" ]
+
+tags:
+  - wifi
+  - setup
+  - js
+  - portal
+  - ui
+  - web
+  - html
+  - css
+
+manifest_version: 2017-09-29

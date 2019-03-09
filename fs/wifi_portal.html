@@ -1,0 +1,43 @@
+<html>
+    <title>Configure Device WiFi</title>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link rel="stylesheet" href="wifi_portal.css">
+<script src="wifi_portal.js"></script>
+</head>
+<body>
+    <div>
+        <div id="form">
+            <div id="header">
+                Configure WiFi
+            </div>
+            <div id="error" class="message"></div>
+            <div id="info" class="message"></div>
+            <div id="networkwrap">
+                <label id="netlabel">
+                    Network
+                </label>
+                <select name="dropdown" id="networks" disabled="disabled" required="required">
+                    <option value="-1" disabled="disabled" selected="selected">
+                        Waiting for networks...
+                    </option> 
+                </select>
+            </div>
+            <div id="passwrap">
+                <label id="passlabel">
+                    Password
+                </label>
+                <input name="password" type="text" placeholder="password" id="password" autocomplete="off"/>
+            </div>
+            <button id="save" class="btn">
+                Save & Test
+            </button>
+            <button id="rescan" class="btn">Rescan</button>
+            <button id="check" class="btn">Check</button>
+        </div>
+        <div style="margin-top: 20px; display: block;">
+            <pre id="response"></pre>
+        </div>
+    </div>
+</body>
+</html>

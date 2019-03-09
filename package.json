@@ -1,0 +1,20 @@
+{
+    "name": "captive-portal-wifi-web",
+    "title": "Mongoose OS WiFi Captive Portal Web UI",
+    "version": "1.0.0",
+    "description": "Web UI for Mongoose OS Captive Portal",
+    "author": {
+        "name": "Myles McNamara",
+        "url": "https://smyl.es"
+    },
+    "license": "Apache-2.0",
+    "dependencies": {
+        "gulp": "^4.0.0",
+        "gulp-gzip": "^1.4.2",
+        "gulp-htmlmin": "^5.0.1",
+        "gulp-minify-css": "^1.2.4",
+        "gulp-rename": "^1.4.0",
+        "gulp-uglify": "^3.0.2",
+        "pump": "^3.0.0"
+    }
+}
