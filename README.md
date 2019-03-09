@@ -7,6 +7,8 @@
   - [Author](#author)
   - [Features](#features)
   - [Installation/Usage](#installationusage)
+    - [Full Captive Portal Stack](#full-captive-portal-stack)
+    - [Only this library](#only-this-library)
     - [Use specific branch of library](#use-specific-branch-of-library)
   - [Required Libraries](#required-libraries)
   - [How it works](#how-it-works)
@@ -41,6 +43,17 @@ Myles McNamara ( https://smyl.es )
 - Minified and GZIP files are available in the `fs_min_gzip` directory (are not copied to device)
 
 ## Installation/Usage
+
+### Full Captive Portal Stack
+If you want all of the features this library was built for, you should install the [Captive Portal WiFi Stack](https://github.com/tripflex/captive-portal-wifi-stack) library instead of just this one:
+
+Add this lib your `mos.yml` file under `libs:`
+
+```yaml
+  - origin: https://github.com/tripflex/captive-portal-wifi-stack
+```
+
+### Only this library
 Add this lib your `mos.yml` file under `libs:`
 
 ```yaml
