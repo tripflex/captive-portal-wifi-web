@@ -255,7 +255,7 @@ var WiFiPortal = {
 
         WiFiPortal.Buttons.disableAll('Scanning...');
 
-        WiFiPortal.rpcCall('POST', 'Wifi.Scan', 'Scanning for WiFi networks in range of device...', false, function ( resp ) {
+        WiFiPortal.rpcCall('POST', 'WiFi.PortalScan', 'Scanning for WiFi networks in range of device...', false, function ( resp ) {
             
             if (resp && resp.length > 0) {
 

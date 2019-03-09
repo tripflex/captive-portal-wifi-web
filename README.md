@@ -73,7 +73,7 @@ To use a specific branch of this library (as example, `dev`), you need to specif
 - [captive-portal-wifi-rpc](https://github.com/tripflex/captive-portal-wifi-rpc)
 
 ## How it works
-On the initial load of captive portal page, a scan will be initiated immediately to scan for available networks from the device, and the dropdown will be updated with the available SSID's the device can connect to.
+On the initial load of captive portal page, a scan will be initiated immediately to scan for available networks from the device `WiFi.PortalScan`, and the dropdown will be updated with the available SSID's the device can connect to.
 
 Once the user enters the password (if there is one), the page will then call the custom RPC endpoint from this library, `WiFi.PortalTest`, which initiates a connection test to the STA using provided credentials.
 
