@@ -261,7 +261,8 @@ var WiFiPortal = {
                 WiFiPortal.Error.show('Error sending credentials to device, please try again');
                 WiFiPortal.Buttons.enableAll();
             }
-
+            
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
         });
     },
     rescan: function () {

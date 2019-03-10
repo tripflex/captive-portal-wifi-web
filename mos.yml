@@ -1,7 +1,7 @@
 author: Myles McNamara <myles@smyl.es>
 type: lib
 description: Captive Portal WiFi Setup Web UI
-version: 1.0.0
+version: 1.0.1
 # platforms: [ cc3200, cc3220, esp32, esp8266 ]
 
 filesystem:

@@ -136,7 +136,15 @@ gulp deploy
 ```
 
 ## Changelog
-**1.0.0** (March 9, 2019) - Initial release
+**1.0.1** (March 10, 2019) 
+ - Added support for Enterprise Networks
+ - Added Emoji Support to show Lock/Unlock for Network Security Type
+ - Hide password field for OPEN networks
+ - Increased dropdown, button, and text input sizes to make easier to select on mobile devices
+ - Added scroll to top after clicking save (to easily see info banner)
+
+**1.0.0** (March 9, 2019)
+ - Initial release
 
 ## License
 Apache 2.0
