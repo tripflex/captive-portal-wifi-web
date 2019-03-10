@@ -1,6 +1,7 @@
 <html>
     <title>Configure Device WiFi</title>
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <link rel="stylesheet" href="wifi_portal.css">
 <script src="wifi_portal.js"></script>
@@ -23,11 +24,17 @@
                     </option> 
                 </select>
             </div>
+            <div id="peapuserwrap">
+                <label id="userlabel">
+                    User
+                </label>
+                <input name="user" type="text" placeholder="username" id="puser" autocomplete="off" />
+            </div>
             <div id="passwrap">
                 <label id="passlabel">
                     Password
                 </label>
-                <input name="password" type="text" placeholder="password" id="password" autocomplete="off"/>
+                <input name="password" type="text" placeholder="password" id="password" autocomplete="off" />
             </div>
             <button id="save" class="btn">
                 Save & Test
