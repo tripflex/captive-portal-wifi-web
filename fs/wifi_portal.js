@@ -1,5 +1,6 @@
 var WiFiPortal = {
     SSIDs: [],
+    Networks: [],
     _msg_proto: function (elID) {
         return {
             $el: document.getElementById(elID),
@@ -17,7 +18,16 @@ var WiFiPortal = {
         WiFiPortal.Info = new WiFiPortal._msg_proto( "info" );
         WiFiPortal.Error = new WiFiPortal._msg_proto( "error" );
         
-        document.getElementById("networks").onchange = function () { WiFiPortal.selectNetwork() };
+        document.getElementById("networks").onchange = function (a) { 
+            var s = (this.value || this.options[this.selectedIndex].value);
+            WiFiPortal.selectNetwork(s);
+        };
+
+        // Stupid iPhones @see https://stackoverflow.com/questions/8004227/ios-select-onchange-not-firing
+        document.getElementById("networks").onblur = function (a) {
+            var s = (this.value || this.options[this.selectedIndex].value);
+            WiFiPortal.selectNetwork(s);
+        };
 
         WiFiPortal.check( function(resp){
 
@@ -261,17 +271,22 @@ var WiFiPortal = {
         WiFiPortal.rpcCall('POST', 'WiFi.PortalScan', 'Scanning for WiFi networks in range of device...', false, function ( resp ) {
             
             if (resp && resp.length > 0) {
+                // Clear last scan networks
+                WiFiPortal.SSIDs = [];
+                WiFiPortal.Networks = [];
 
                 var netSelect = document.getElementById("networks");
                 netSelect.removeAttribute("disabled"); // Remove disabled (on page load)
                 netSelect.innerHTML = '<option value="-1" disabled="disabled" selected="selected">Please select an SSID...</option>'; // clear any existing ones
 
                 resp.forEach(function (net) {
-                    if (WiFiPortal.SSIDs.indexOf( net.ssid ) > -1 ){
-                        return; // prevent adding dupe SSIDs as all we send is the SSID to connect to
+                    // Only add SSID that do not exist already
+                    if (WiFiPortal.SSIDs.indexOf(net.ssid) > -1) {
+                        return; // Continue to next
                     }
+
                     var opt = document.createElement('option');
-                    var authInt = parseInt( net.auth );
+                    var authInt = parseInt(net.auth);
                     var authEmoji = authInt > 0 ? "🔒 " : "🔓 ";
                     var authType = "OPEN";
                     if (authInt === 1) {
@@ -282,16 +297,17 @@ var WiFiPortal = {
                         authType = "WPA2/PSK";
                     } else if (authInt === 4) {
                         authType = "WPA/WPA2/PSK";
-                    } else if (authInt === 5){
+                    } else if (authInt === 5) {
                         authType = "WPA2/ENT";
                     }
-                    opt.innerHTML = authEmoji + WiFiPortal.rssiToStrength(net.rssi) + "% - " + net.ssid + "(" + authType + ")";
+                    opt.innerHTML = authEmoji + WiFiPortal.rssiToStrength(net.rssi) + "% - " + net.ssid + " (" + authType + ")";
                     opt.value = net.ssid;
                     netSelect.appendChild(opt);
                     WiFiPortal.SSIDs.push(net.ssid);
+                    WiFiPortal.Networks.push(net);
                 });
 
-                WiFiPortal.Info.show("Please select from one of the " + resp.length + " WiFi networks found.");
+                WiFiPortal.Info.show("Please select from one of the " + WiFiPortal.SSIDs.length + " WiFi networks found.");
 
             } else {
                 WiFiPortal.Info.hide();
@@ -376,24 +392,39 @@ var WiFiPortal = {
             return '<span class="' + cls + '">' + match + '</span>';
         });
     },
-    selectNetwork: function () {
+    selectNetwork: function ( selected ) {
         var passField = document.getElementById("passwrap");
         var userField = document.getElementById("peapuserwrap");
         var Networks = document.getElementById("networks");
-        WiFiPortal.SSIDs.forEach(function (net) {
-            if (net.ssid === Networks.value) {
-                if (net.auth === 5) {
-                    userField.style.display = "block";
-                    passField.style.display = "block";
-                } else if( net.auth === 0 ){
-                    userField.style.display = "none";
-                    passField.style.display = "none";
-                } else {
-                    userField.style.display = "none";
-                    passField.style.display = "block";
-                }
+        console.log('Selected:' + selected);
+        console.log('Selected 2:' + Networks.value);
+
+        userField.style.display = "none"; // Hide by default
+        var found = false;
+
+        WiFiPortal.Networks.forEach( function(net){
+            if( net.ssid !== selected ){
+                return; //continue
             }
+            var auth = parseInt( net.auth );
+            if (auth === 0) {
+                passField.style.display = "none";
+            } else if (auth === 5) {
+                passField.style.display = "block";
+                userField.style.display = "block";
+            } else {
+                // Show by default if not match any above
+                passField.style.display = "block";
+            }
+
+            found = true;
+            return false;
         });
+
+        if( ! found ){
+            passField.style.display = "block";
+        }
+
     }
 };
 

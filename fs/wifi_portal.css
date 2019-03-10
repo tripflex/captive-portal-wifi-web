@@ -58,7 +58,7 @@ body {
   color: rgba(0, 0, 0, 0.87);
   cursor: pointer;
   display: block;
-  height: 38px;
+  height: 4em;
   left: 0px;
   min-height: 15px;
   position: relative;
@@ -88,6 +88,7 @@ body {
   padding: 8px 8px;
   font-size: 1em;
   margin-top: 10px;
+  height: 4em;
 }
 
 .btn {
@@ -98,7 +99,7 @@ body {
   cursor: pointer;
   font: normal normal 700 normal 14px / 14px Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
   border-radius: 4px 4px 4px 4px;
-  height: 3em;  
+  height: 4em;  
 }
 
 #rescan, #check {
@@ -117,9 +118,10 @@ body {
 #save {
   box-shadow: rgba(34, 36, 38, 0.15) 0px 0px 0px 0px inset;
   color: rgb(255, 255, 255);
-  height: 4em;
+  height: 5em;
   background: rgb(33, 133, 208) none repeat scroll 0% 0% / auto padding-box border-box;
   border: 0px none rgb(255, 255, 255);
+  margin-top: 0.8em;
 }
 
 pre {

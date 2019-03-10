@@ -21,7 +21,11 @@ gulp.task('minjs', function (cb) {
     pump(
         [
             gulp.src(jsSources),
-            uglify(),
+            uglify({
+                compress: {
+                    drop_console: true
+                }
+            }),
             gulp.dest(minDest)
         ],
         cb
